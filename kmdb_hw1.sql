@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS movie;
 DROP TABLE IF EXISTS studio;
 DROP TABLE IF EXISTS actor;
 DROP TABLE IF EXISTS characters;
-DROP TABLE IF EXISTS agent;
+
 
 CREATE TABLE movie (
      id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -20,7 +20,7 @@ CREATE TABLE studio (
 CREATE TABLE actor (
      id INTEGER PRIMARY KEY AUTOINCREMENT,
      actor_name TEXT,
-     agent_id INTEGER
+     agent TEXT
 );
 
 CREATE TABLE characters (
@@ -30,7 +30,57 @@ CREATE TABLE characters (
      movie_id INTEGER
 );
 
-CREATE TABLE agent (
-     id INTEGER PRIMARY KEY AUTOINCREMENT,
-     agent_name TEXT
-);
+
+
+INSERT INTO studio (studio_name
+) values (
+   "Warner Bros.")
+   ;
+
+INSERT INTO movie (title, year_released, MPAA_rating, studio_id
+) values 
+("Batman Begins","2005","PG-13",1),
+("The Dark Knight","2008","PG-13",1),
+("The Dark Knight Rises",  "2012","PG-13",1)
+;
+
+INSERT INTO actor (actor_name)
+values 
+("Christian Bale"),
+("Michael Caine"),
+("Liam Neeson"),  
+("Katie Holmes"),
+("Gary Oldman"),           
+("Heath Ledger"),
+("Aaron Eckhart"), 
+("Maggie Gyllenhaal"),
+("Tom Hardy"),
+("Joseph Gordon-Levitt"),
+("Anne Hathaway")
+;  
+
+INSERT INTO characters (movie_id, actor_id, character_name)
+values 
+(1,1,"Bruce Wayne"),
+ (1,2,"Alfred"),
+ (1,3,"Ra's Al Ghul"),
+ (1,4, "Rachel Dawes"),
+ (1,5,"Commissioner Gordon"),
+ (2,1,"Bruce Wayne"),
+ (2,6, "Joker"),
+ (2,7, "Harvey Dent"),
+ (2,2,"Alfred"),
+ (2,8, "Rachel Dawes"),
+ (3,1,"Bruce Wayne"),
+ (3,5, "Commissioner Gordon"),
+ (3,9, "Bane"),
+ (3,10, "John Blake"),
+ (3,11, "Selina Kyle")
+ ;
+
+
+UPDATE actor set agent = "William Morris Endeavor"
+where id= 1 
+;
+select * from actor
+
