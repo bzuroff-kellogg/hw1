@@ -82,5 +82,30 @@ values
 UPDATE actor set agent = "William Morris Endeavor"
 where id= 1 
 ;
-select * from actor
 
+
+.print "Movies"
+.print "======"
+.print ""
+
+select title, year_released, MPAA_rating, studio_name
+from movie
+join studio on movie.studio_id = studio.id
+;
+.print ""
+.print "Top Cast"
+.print "========"
+.print ""
+
+select title, actor_name, character_name
+from characters
+join movie on characters.movie_id = movie.id
+join actor on actor.id = characters.actor_id;
+
+.print ""
+.print "Represented by agent"
+.print "===================="
+.print ""
+
+select actor_name from actor
+where agent = "William Morris Endeavor"
