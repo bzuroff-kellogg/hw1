@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS movie;
 DROP TABLE IF EXISTS studio;
 DROP TABLE IF EXISTS actor;
 DROP TABLE IF EXISTS characters;
-
+DROP TABLE IF EXISTS agent;
 
 CREATE TABLE movie (
      id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -20,7 +20,7 @@ CREATE TABLE studio (
 CREATE TABLE actor (
      id INTEGER PRIMARY KEY AUTOINCREMENT,
      actor_name TEXT,
-     agent TEXT
+     agent_id INTEGER
 );
 
 CREATE TABLE characters (
@@ -28,6 +28,10 @@ CREATE TABLE characters (
      character_name TEXT,
      actor_id INTEGER,
      movie_id INTEGER
+);
+CREATE TABLE agent (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     agent_name TEXT
 );
 
 
@@ -77,9 +81,14 @@ values
  (3,10, "John Blake"),
  (3,11, "Selina Kyle")
  ;
+INSERT INTO agent (agent_name)
+values 
+(1, "William Morris Endeavor")
+ ;
 
 
-UPDATE actor set agent = "William Morris Endeavor"
+
+UPDATE actor set agent_id = 1
 where id= 1 
 ;
 
@@ -108,4 +117,4 @@ join actor on actor.id = characters.actor_id;
 .print ""
 
 select actor_name from actor
-where agent = "William Morris Endeavor"
+where agent_id = 1
